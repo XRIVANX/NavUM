@@ -65,7 +65,7 @@ body {
     transition: transform 0.3s;
 }
 
-/* Tablet breakpoint (up to 768px wide) */
+/*Tablet Size*/
 @media (max-width: 768px) {
     .logo {
         width: 100px;
@@ -82,7 +82,7 @@ body {
     }
 }
 
-/* Phone breakpoint (up to 500px wide) */
+/* Phone Phone Size */
 @media (max-width: 500px) {
     .logo {
         width: 80px;
@@ -98,3 +98,4 @@ body {
         padding: 12px 20px;
     }
 }
+
