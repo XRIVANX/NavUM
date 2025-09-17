@@ -65,7 +65,7 @@ body {
     transition: transform 0.3s;
 }
 
-/* Tablet Size */
+/* Tablet Size Portrait */
 @media (max-width: 768px) {
     .logo {
         width: 100px;
@@ -82,7 +82,7 @@ body {
     }
 }
 
-/* Phone Size */
+/* Phone Size Portrait */
 @media (max-width: 500px) {
     .logo {
         width: 80px;
@@ -96,5 +96,23 @@ body {
         max-width: 160px;
         font-size: 1rem;
         padding: 12px 20px;
+    }
+}
+
+/* Landscape mode Phone/Tablet */
+@media (orientation: landscape) {
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+    .map-placeholder {
+        width: 90vw;
+        max-width: none;
+        height: 50vh; 
+    }
+    .rooms-btn {
+        max-width: 140px;
+        font-size: 0.9rem;
+        padding: 10px 16px;
     }
 }
