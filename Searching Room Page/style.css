@@ -100,7 +100,7 @@ body {
 }
 
 /* Landscape mode Phone/Tablet */
-@media (orientation: landscape) {
+@media (max-width: 1024px) and (orientation: landscape) {
     .logo {
         width: 70px;
         height: 70px;
@@ -108,7 +108,7 @@ body {
     .map-placeholder {
         width: 90vw;
         max-width: none;
-        height: 50vh; 
+        height: 50vh;
     }
     .rooms-btn {
         max-width: 140px;
@@ -116,3 +116,4 @@ body {
         padding: 10px 16px;
     }
 }
+
