@@ -99,3 +99,20 @@ body {
     }
 }
 
+/* Landscape Phone/tablet */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+    .map-placeholder {
+        width: 90vw;
+        max-width: none;
+        height: 50vh;
+    }
+    .rooms-btn {
+        max-width: 140px;
+        font-size: 0.9rem;
+        padding: 10px 16px;
+    }
+}
