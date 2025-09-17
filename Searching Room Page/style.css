@@ -8,12 +8,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    }
+}
 
 .logo-container {
     margin-top: 24px;
     margin-bottom: 16px;
-    }
+}
         
 .logo {
     width: 120px;
@@ -21,7 +21,7 @@ body {
     object-fit: contain;
     display: block;
     margin: 0 auto;
-    }
+}
 
 .map-placeholder {
     width: 95vw;
@@ -42,8 +42,7 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 32px;
-  
-    }
+}
         
 .rooms-btn {
     background: #c00;
@@ -55,34 +54,47 @@ body {
     padding: 13px 45px;
     font-size: 1.3rem;
     font-weight: bold;
-  
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 10px;
-    
- 
-    }
+}
 
-    .arrow-down {
-        font-size: 1.2em;
-        transition: transform 0.3s;
-    }
+.arrow-down {
+    font-size: 1.2em;
+    transition: transform 0.3s;
+}
 
-    
-
-
-
-@media (max-with: 500px) {
+/* Tablet Size */
+@media (max-width: 768px) {
     .logo {
-        width: 90px;
-        height: 90px;
+        width: 100px;
+        height: 100px;
     }
     .map-placeholder {
-        height: 3180px;
+        max-width: 350px;
+        height: 30vh;
     }
     .rooms-btn {
+        max-width: 180px;
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
+}
+
+/* Phone Size */
+@media (max-width: 500px) {
+    .logo {
+        width: 80px;
+        height: 80px;
+    }
+    .map-placeholder {
+        max-width: 320px;
+        height: 28vh;
+    }
+    .rooms-btn {
+        max-width: 160px;
         font-size: 1rem;
-        padding: 14px 0;
+        padding: 12px 20px;
     }
 }
