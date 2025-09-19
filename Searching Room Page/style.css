@@ -43,6 +43,36 @@ body {
     align-items: center;
     margin-bottom: 32px;
 }
+
+.rooms-list {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #a00;
+    color: #fff;
+    min-width: 200px;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 12px 0;
+    text-align: center;
+}
+
+.rooms-list div {
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.rooms-list div:hover {
+    background: #c00;
+}
+
+.rooms-list.show {
+    display: block;
+}
         
 .rooms-btn {
     background: #c00;
@@ -116,4 +146,5 @@ body {
         padding: 10px 16px;
     }
 }
+
 
