@@ -1,0 +1,219 @@
+<?php
+include("connect.php");
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: index.php");
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT firstname, lastname FROM accounts WHERE accountid = '$user_id'";
+$result = $conn->query($sql);
+
+$user_firstname = '';
+$user_lastname = '';
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $user_firstname = htmlspecialchars($row['firstname']);
+    $user_lastname = htmlspecialchars($row['lastname']);
+}
+
+$conn->close();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="general.css"/>
+    <title>Document</title>
+  </head>
+  <body>
+    <section class = "nav">
+        <h1 class = "placeholder-logo">NaviUM</h1>
+        <ul>
+            <li><span class="user-name"><?php echo $user_firstname . " " . $user_lastname; ?></span></li>
+            <li class="log-out-button"><a href="logout.php">Log Out</a></li>
+        </ul>
+    </section>
+    <section class = "hero-admin">
+    <section class="adjacent-buildings-1">
+      <section class="room-group-1">
+        <ul class="rooms-1">
+          <div class="unclickable-button">
+            <button>1st Floor</button>
+          </div>
+          <li>1st Room</li>
+          <li>2nd Room</li>
+          <li>3rd Room</li>
+          <li>4th Room</li>
+        </ul>
+      </section>
+
+      <section class="room-group-2">
+        <div class="first-floor" id="first-floor-2">
+          <ul class="rooms-2">
+            <div class="floor-buttons-2">
+                <button id="first-floor-button-2_1">1st Floor</button>
+                <button id="second-floor-button-2_1">2nd Floor</button>
+                <button id="third-floor-button-2_1">3rd Floor</button>
+            </div>
+              <li>1st Room</li>
+              <li>2nd Room</li>
+              <li>3rd Room</li>
+              <li>4th Room</li>
+              <li>5th Room</li>
+              <li>6th Room</li>
+            </p>
+          </ul>
+        </div>
+        <div class="second-floor" id="second-floor-2" style="display: none">
+          <ul class="rooms-2">
+            <div class="floor-buttons-2">
+                <button id="first-floor-button-2_2">1st Floor</button>
+                <button id="second-floor-button-2_2">2nd Floor</button>
+                <button id="third-floor-button-2_2">3rd Floor</button>
+            </div>
+            <li>7th Room</li>
+            <li>8th Room</li>
+            <li>9th Room</li>
+            <li>10th Room</li>
+            <li>11th Room</li>
+            <li>12th Room</li>
+          </ul>
+        </div>
+        <div class="third-floor" id="third-floor-2" style="display: none">
+          <ul class="rooms-2">
+            <div class="floor-buttons-2">
+                <button id="first-floor-button-2_3">1st Floor</button>
+                <button id="second-floor-button-2_3">2nd Floor</button>
+                <button id="third-floor-button-2_3">3rd Floor</button>
+            </div>
+            <li>13th Room</li>
+            <li>14th Room</li>
+            <li>15th Room</li>
+            <li>16th Room</li>
+            <li>17th Room</li>
+            <li>18th Room</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <section class="building-spacing">
+        <div class = "adjacent-buildings-2">
+      <section class="room-group-3">
+        <div class="first-floor" id="first-floor-3">
+          <ul class="rooms-3">  
+            <div class="floor-buttons-3">
+                <button id="first-floor-button-3_1">1st Floor</button>
+                <button id="second-floor-button-3_1">2nd Floor</button>
+                <button id="third-floor-button-3_1">3rd Floor</button>
+            </div>
+            <li>1st Room</li>
+            <li>2nd Room</li>
+            <li>3rd Room</li>
+          </ul>
+        </div>
+        <div class="second-floor" id="second-floor-3" style="display: none">
+          <ul class="rooms-3">
+            <div class="floor-buttons-3">
+                <button id="first-floor-button-3_2">1st Floor</button>
+                <button id="second-floor-button-3_2">2nd Floor</button>
+                <button id="third-floor-button-3_2">3rd Floor</button>
+             </div>
+            <li>4th Room</li>
+            <li>5th Room</li>
+            <li>6th Room</li>
+          </ul>
+        </div>
+        <div class="third-floor" id="third-floor-3" style="display: none">
+          <ul class="rooms-3">
+            <div class="floor-buttons-3">
+                <button id="first-floor-button-3_3">1st Floor</button>
+                <button id="second-floor-button-3_3">2nd Floor</button>
+                <button id="third-floor-button-3_3">3rd Floor</button>
+             </div>
+            <li>7th Room</li>
+            <li>8th Room</li>
+            <li>9th Room</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="room-group-4">
+        <ul class="rooms-4">
+          <div class="unclickable-button">
+            <button>1st Floor</button>
+          </div>
+          <li>1st Room</li>
+          <li>2nd Room</li>
+          <li>3rd Room</li>
+        </ul>
+      </section>
+      </div>
+
+      <section class="open-area">
+        <h1>Open Area</h1>
+      </section>
+
+      <section class="room-group-5">
+        <div class="first-floor" id="first-floor-5">
+          <ul class="rooms-5">
+            <div class="floor-buttons-5">
+                <button id="first-floor-button-5_1">1st Floor</button>
+                <button id="second-floor-button-5_1">2nd Floor</button>
+                <button id="third-floor-button-5_1">3rd Floor</button>
+            </div>
+            <li>1st Room</li>
+            <li>2nd Room</li>
+            <li>3rd Room</li>
+            <li>4th Room</li>
+            <li>5th Room</li>
+          </ul>
+        </div>
+        <div class="second-floor" id="second-floor-5" style="display: none">
+          <ul class="rooms-5">
+            <div class="floor-buttons-5">
+                <button id="first-floor-button-5_2">1st Floor</button>
+                <button id="second-floor-button-5_2">2nd Floor</button>
+                <button id="third-floor-button-5_2">3rd Floor</button>
+            </div>
+            <li>6th Room</li>
+            <li>7th Room</li>
+            <li>8th Room</li>
+          </ul>
+        </div>
+        <div class="third-floor" id="third-floor-5" style="display: none">
+          <ul class="rooms-5">
+            <div class="floor-buttons-5">
+                <button id="first-floor-button-5_3">1st Floor</button>
+                <button id="second-floor-button-5_3">2nd Floor</button>
+                <button id="third-floor-button-5_3">3rd Floor</button>
+            </div>
+            <li>9th Room</li>
+            <li>10th Room</li>
+            <li>11th Room</li>
+          </ul>
+        </div>
+      </section>
+    </section>
+
+    <section class="room-group-6">
+        <ul class="rooms-6">
+          <div class="unclickable-button">
+            <button>1st Floor</button>
+          </div>
+          <li>1st Room</li>
+          <li>2nd Room</li>
+          <li>3rd Room</li>
+          <li>4th Room</li>
+        </ul>
+      </section>
+      </section>
+    <script src="admin_page.js"></script>
+  </body>
+</html>
