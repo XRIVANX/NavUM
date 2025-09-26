@@ -37,16 +37,58 @@ CREATE TABLE `accounts` (
 insert  into `accounts`(`accountid`,`username`,`passwords`,`firstname`,`lastname`,`sex`,`email`,`contactno`) values 
 (1,'admin','202cb962ac59075b964b07152d234b70','Jastyne','De Palma','Male','depalmajastyne@gmail.com','09506821522');
 
+/*Table structure for table `floors` */
+
+DROP TABLE IF EXISTS `floors`;
+
+CREATE TABLE `floors` (
+  `floor_id` int(11) NOT NULL AUTO_INCREMENT,
+  `floor_number` int(11) DEFAULT NULL,
+  PRIMARY KEY (`floor_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `floors` */
+
+insert  into `floors`(`floor_id`,`floor_number`) values 
+(1,1),
+(2,2),
+(3,3);
+
+/*Table structure for table `room_groups` */
+
+DROP TABLE IF EXISTS `room_groups`;
+
+CREATE TABLE `room_groups` (
+  `room_group_id` int(11) NOT NULL AUTO_INCREMENT,
+  `room_group_number` int(11) DEFAULT NULL,
+  PRIMARY KEY (`room_group_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `room_groups` */
+
+insert  into `room_groups`(`room_group_id`,`room_group_number`) values 
+(1,1),
+(2,2),
+(3,3),
+(4,4),
+(5,5);
+
 /*Table structure for table `rooms` */
 
 DROP TABLE IF EXISTS `rooms`;
 
 CREATE TABLE `rooms` (
   `room_id` int(11) NOT NULL AUTO_INCREMENT,
-  `room_name` varchar(25) DEFAULT NULL,
+  `room_group_id` int(11) DEFAULT NULL,
+  `floor_id` int(11) DEFAULT NULL,
+  `room_name` varchar(25) DEFAULT 'Setting Up',
   `room_status` varchar(25) DEFAULT 'Setting Up',
-  PRIMARY KEY (`room_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  PRIMARY KEY (`room_id`),
+  KEY `room_group_id` (`room_group_id`),
+  KEY `floor_id` (`floor_id`),
+  CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`room_group_id`) REFERENCES `room_groups` (`room_group_id`),
+  CONSTRAINT `rooms_ibfk_2` FOREIGN KEY (`floor_id`) REFERENCES `floors` (`floor_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1201 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `rooms` */
 

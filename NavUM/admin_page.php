@@ -19,6 +19,19 @@ if ($result->num_rows > 0) {
     $user_lastname = htmlspecialchars($row['lastname']);
 }
 
+$room_groups_data = [];
+
+$sql_rooms = "SELECT room_id, room_name, room_status, room_group_id, floor_id FROM rooms ORDER BY room_group_id, floor_id, room_id";
+$result_rooms = $conn->query($sql_rooms);
+
+if ($result_rooms) {
+    while ($room = $result_rooms->fetch_assoc()) {
+        $group = $room['room_group_id'];
+        $floor = $room['floor_id'];
+        $room_groups_data[$group][$floor][] = $room;
+    }
+}
+
 $conn->close();
 ?>
 
@@ -43,13 +56,26 @@ $conn->close();
     <section class="adjacent-buildings-1">
       <section class="room-group-1">
         <ul class="rooms-1">
-          <div class="unclickable-button">
+        <div class="unclickable-button">
             <button>1st Floor</button>
-          </div>
-          <li>1st Room</li>
-          <li>2nd Room</li>
-          <li>3rd Room</li>
-          <li>4th Room</li>
+        </div>
+        
+        <?php 
+        $group = 1; $floor = 1;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
         </ul>
       </section>
 
@@ -61,14 +87,23 @@ $conn->close();
                 <button id="second-floor-button-2_1">2nd Floor</button>
                 <button id="third-floor-button-2_1">3rd Floor</button>
             </div>
-              <li>1st Room</li>
-              <li>2nd Room</li>
-              <li>3rd Room</li>
-              <li>4th Room</li>
-              <li>5th Room</li>
-              <li>6th Room</li>
-            </p>
-          </ul>
+              <?php 
+        $group = 2; $floor = 1;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
         <div class="second-floor" id="second-floor-2" style="display: none">
           <ul class="rooms-2">
@@ -77,14 +112,25 @@ $conn->close();
                 <button id="second-floor-button-2_2">2nd Floor</button>
                 <button id="third-floor-button-2_2">3rd Floor</button>
             </div>
-            <li>7th Room</li>
-            <li>8th Room</li>
-            <li>9th Room</li>
-            <li>10th Room</li>
-            <li>11th Room</li>
-            <li>12th Room</li>
-          </ul>
+            <?php 
+        $group = 2; $floor = 2;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
+
         <div class="third-floor" id="third-floor-2" style="display: none">
           <ul class="rooms-2">
             <div class="floor-buttons-2">
@@ -92,13 +138,23 @@ $conn->close();
                 <button id="second-floor-button-2_3">2nd Floor</button>
                 <button id="third-floor-button-2_3">3rd Floor</button>
             </div>
-            <li>13th Room</li>
-            <li>14th Room</li>
-            <li>15th Room</li>
-            <li>16th Room</li>
-            <li>17th Room</li>
-            <li>18th Room</li>
-          </ul>
+            <?php 
+        $group = 2; $floor = 3;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
       </section>
     </section>
@@ -113,11 +169,25 @@ $conn->close();
                 <button id="second-floor-button-3_1">2nd Floor</button>
                 <button id="third-floor-button-3_1">3rd Floor</button>
             </div>
-            <li>1st Room</li>
-            <li>2nd Room</li>
-            <li>3rd Room</li>
-          </ul>
+            <?php 
+        $group = 3; $floor = 1;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
+
         <div class="second-floor" id="second-floor-3" style="display: none">
           <ul class="rooms-3">
             <div class="floor-buttons-3">
@@ -125,11 +195,25 @@ $conn->close();
                 <button id="second-floor-button-3_2">2nd Floor</button>
                 <button id="third-floor-button-3_2">3rd Floor</button>
              </div>
-            <li>4th Room</li>
-            <li>5th Room</li>
-            <li>6th Room</li>
-          </ul>
+            <?php 
+        $group = 3; $floor = 2;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
+
         <div class="third-floor" id="third-floor-3" style="display: none">
           <ul class="rooms-3">
             <div class="floor-buttons-3">
@@ -137,10 +221,23 @@ $conn->close();
                 <button id="second-floor-button-3_3">2nd Floor</button>
                 <button id="third-floor-button-3_3">3rd Floor</button>
              </div>
-            <li>7th Room</li>
-            <li>8th Room</li>
-            <li>9th Room</li>
-          </ul>
+            <?php 
+        $group = 3; $floor = 3;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
       </section>
 
@@ -149,9 +246,22 @@ $conn->close();
           <div class="unclickable-button">
             <button>1st Floor</button>
           </div>
-          <li>1st Room</li>
-          <li>2nd Room</li>
-          <li>3rd Room</li>
+          <?php 
+        $group = 4; $floor = 1;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
         </ul>
       </section>
       </div>
@@ -168,12 +278,23 @@ $conn->close();
                 <button id="second-floor-button-5_1">2nd Floor</button>
                 <button id="third-floor-button-5_1">3rd Floor</button>
             </div>
-            <li>1st Room</li>
-            <li>2nd Room</li>
-            <li>3rd Room</li>
-            <li>4th Room</li>
-            <li>5th Room</li>
-          </ul>
+            <?php 
+        $group = 5; $floor = 1;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
         <div class="second-floor" id="second-floor-5" style="display: none">
           <ul class="rooms-5">
@@ -182,11 +303,25 @@ $conn->close();
                 <button id="second-floor-button-5_2">2nd Floor</button>
                 <button id="third-floor-button-5_2">3rd Floor</button>
             </div>
-            <li>6th Room</li>
-            <li>7th Room</li>
-            <li>8th Room</li>
-          </ul>
+            <?php 
+        $group = 5; $floor = 2;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
+        
         <div class="third-floor" id="third-floor-5" style="display: none">
           <ul class="rooms-5">
             <div class="floor-buttons-5">
@@ -194,10 +329,23 @@ $conn->close();
                 <button id="second-floor-button-5_3">2nd Floor</button>
                 <button id="third-floor-button-5_3">3rd Floor</button>
             </div>
-            <li>9th Room</li>
-            <li>10th Room</li>
-            <li>11th Room</li>
-          </ul>
+            <?php 
+        $group = 5; $floor = 3;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
+        </ul>
         </div>
       </section>
     </section>
@@ -207,10 +355,22 @@ $conn->close();
           <div class="unclickable-button">
             <button>1st Floor</button>
           </div>
-          <li>1st Room</li>
-          <li>2nd Room</li>
-          <li>3rd Room</li>
-          <li>4th Room</li>
+          <?php 
+        $group = 6; $floor = 1;
+        if (isset($room_groups_data[$group][$floor])): 
+            foreach ($room_groups_data[$group][$floor] as $room):
+                $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+        ?>
+            <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
+                class="room-item <?php echo $status_class; ?>">
+                <?php echo htmlspecialchars($room['room_name']); ?>
+            </li>
+        <?php 
+            endforeach;
+        else: 
+        ?>
+            <li>No rooms found on this floor.</li>
+        <?php endif; ?>
         </ul>
       </section>
       </section>
