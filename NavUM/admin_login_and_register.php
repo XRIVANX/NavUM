@@ -13,7 +13,7 @@ include("loginandregister.php");
     <link rel="stylesheet" href="general.css">
     <title>NavUM Log In or Register</title>
   </head>
-  <body>
+  <body class = "admin-login-and-register">
     <section class="accounts-window" id="accounts-window">
         <h1 class="form-title">NavUM Log In or Register</h1>
         <button class="log-in-button" id="log-in-button">Log in</button>
@@ -44,7 +44,7 @@ include("loginandregister.php");
         >
           Log-in
         </button>
-        <button class="back-button" id="back-button">Back</button>
+        <button class="login-back-button" id="back-button">Back</button>
         <?php if (isset($login_error)): ?>
         <p class="error-message"><?php echo $login_error; ?></p>
         <?php endif; ?>
@@ -91,7 +91,7 @@ include("loginandregister.php");
           />
         </div>
           <div class="gender-type" id="gender-type">
-            <label for="sex-type">Sex</label>
+            <label for="sex-type">Sex:</label>
             <select id="sex-type" name="sex-type">
               <option value="Male">Male</option>
               <option value="Female">Female</option>

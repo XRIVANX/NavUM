@@ -33,6 +33,8 @@ if ($result_rooms) {
 }
 
 $conn->close();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -42,13 +44,13 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="general.css"/>
-    <title>Document</title>
+    <title>Admin's Page</title>
   </head>
   <body>
     <section class = "nav">
-        <h1 class = "placeholder-logo">NaviUM</h1>
+        <h1 class = "placeholder-logo">NavUM</h1>
         <ul>
-            <li><span class="user-name"><?php echo $user_firstname . " " . $user_lastname; ?></span></li>
+            <li class = "user-name-container"><span class="user-name"><?php echo $user_firstname . " " . $user_lastname; ?></span></li>
             <li class="log-out-button"><a href="logout.php">Log Out</a></li>
         </ul>
     </section>
@@ -66,10 +68,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+        <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -93,10 +97,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+        <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -118,10 +124,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -144,10 +152,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -175,10 +185,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -201,10 +213,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -227,10 +241,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -252,10 +268,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -284,10 +302,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -309,10 +329,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -335,10 +357,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 
@@ -361,10 +385,12 @@ $conn->close();
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
         ?>
+            <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 
                 class="room-item <?php echo $status_class; ?>">
                 <?php echo htmlspecialchars($room['room_name']); ?>
             </li>
+            </a>
         <?php 
             endforeach;
         else: 

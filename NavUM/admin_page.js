@@ -143,8 +143,8 @@ firstfloor3_2.addEventListener("click", function () {
 });
 //-----------------------------------------------------
 secondfloor3_2.addEventListener("click", function () {
-  firstfloorlist3.style.display = "flex";
-  secondfloorlist3.style.display = "none";
+  firstfloorlist3.style.display = "none";
+  secondfloorlist3.style.display = "flex";
   thirdfloorlist3.style.display = "none";
 });
 //-----------------------------------------------------
@@ -161,15 +161,15 @@ firstfloor3_3.addEventListener("click", function () {
 });
 //-----------------------------------------------------
 secondfloor3_3.addEventListener("click", function () {
-  firstfloorlist3.style.display = "flex";
-  secondfloorlist3.style.display = "none";
+  firstfloorlist3.style.display = "none";
+  secondfloorlist3.style.display = "flex";
   thirdfloorlist3.style.display = "none";
 });
 //-----------------------------------------------------
 thirdfloor3_3.addEventListener("click", function () {
-  firstfloorlist3.style.display = "flex";
+  firstfloorlist3.style.display = "none";
   secondfloorlist3.style.display = "none";
-  thirdfloorlist3.style.display = "none";
+  thirdfloorlist3.style.display = "flex";
 });
 //-----------------------------------------------------
 //Room Group 5
@@ -199,8 +199,8 @@ firstfloor5_2.addEventListener("click", function () {
 });
 //-----------------------------------------------------
 secondfloor5_2.addEventListener("click", function () {
-  firstfloorlist5.style.display = "flex";
-  secondfloorlist5.style.display = "none";
+  firstfloorlist5.style.display = "none";
+  secondfloorlist5.style.display = "flex";
   thirdfloorlist5.style.display = "none";
 });
 //-----------------------------------------------------
@@ -217,13 +217,13 @@ firstfloor5_3.addEventListener("click", function () {
 });
 //-----------------------------------------------------
 secondfloor5_3.addEventListener("click", function () {
-  firstfloorlist5.style.display = "flex";
-  secondfloorlist5.style.display = "none";
+  firstfloorlist5.style.display = "none";
+  secondfloorlist5.style.display = "flex";
   thirdfloorlist5.style.display = "none";
 });
 //-----------------------------------------------------
 thirdfloor5_3.addEventListener("click", function () {
-  firstfloorlist5.style.display = "flex";
+  firstfloorlist5.style.display = "none";
   secondfloorlist5.style.display = "none";
-  thirdfloorlist5.style.display = "none";
+  thirdfloorlist5.style.display = "flex";
 });
