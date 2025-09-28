@@ -46,7 +46,7 @@ $conn->close();
     <link rel="stylesheet" href="general.css"/>
     <title>Admin's Page</title>
   </head>
-  <body>
+  <body class="admin-page">
     <section class = "nav">
         <h1 class = "placeholder-logo">NavUM</h1>
         <ul>
