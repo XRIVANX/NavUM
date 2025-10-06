@@ -1,3 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f9f9f9;
+}
+
+/*Mobile Format (320px430px)*/
+
+.app-container {
+  width: 100vw;         
+    max-width: 430px;     
+    height: 100vh;        
+    min-height: 100vh;
+    background-image: url("Get_started_Frontpage/Map Background.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 0;     
+    box-shadow: none;     
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    overflow: hidden; 
+}
+
+.logo {
+    width: 230px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 100px;
+    color: #111;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    margin-top: 50px;
+    font-size: 40px;
+
+}
+
+.nav-icon {
+    width: 40px;
+    height: 40px;
+
+}
+
+.title span {
+    color: #d32f2f;
+    font-size: 40px;
+
+}
+
+.get-started-btn {
+    background: linear-gradient(135deg, #d32f2f, #b71c1c);
+    color: #fff;
+    border: none;
+    padding: 16px 50px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 6px 15px rgba(211, 47, 47, 0.4);
+    transition: all 0.3s ease;
+    margin-bottom: 100px;
+}
+
+.get-started-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(82, 6, 6, 0.577);
+}
+
+.tagline {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    color:#000;
+    
+}
+
+.description {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.3;
+}
+
+/* Tablet Portrait (768px–1024px wide) */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+    .app-container {
+        width: 600px;
+        height: 1000px;
+        border-radius: 40px;
+        padding: 40px;
+    }
+
+    .logo {
+        width: 140px;
+    }
+
+    .title {
+        font-size: 2.2rem;
+    }
+
+    .get-started-btn {
+        font-size: 1.2rem;
+        padding: 16px 40px;
+    }
+
+    .tagline {
+        font-size: 1.6rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+}
+
+/* Tablet Landscape (1024px–1366px wide) */
+
+@media (min-width: 1024px) and (max-width: 1366px) and (orientation: landscape) {
+    .app-container {
+        width: 900px;
+        height: 650px;
+        border-radius: 40px;
+        padding: 40px;
+    }
+
+    .logo {
+        width: 210px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .get-started-btn {
+        font-size: 1.1rem;
+        padding: 14px 35px;
+    }
+
+    .tagline {
+        font-size: 1.5rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+}
+
+/* Second page styles */
+
 body {
     margin: 0;
     padding: 0;
@@ -14,7 +182,7 @@ body {
     margin-top: 24px;
     margin-bottom: 16px;
 }
-        
+
 .logo {
     width: 120px;
     height: 120px;
@@ -26,22 +194,30 @@ body {
 .map-placeholder {
     width: 95vw;
     max-width: 400px;
-    height: 35vh;
-    min-height: 180px;
-    background: #222;
+    height: 60vh;
+    min-height: px;
+    background: #ebebeb;
     border-radius: 16px;
     margin-bottom: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
-    
+.campus-map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 16px;
+}
+
 .rooms-btn-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 32px;
+    position: relative;
 }
 
 .rooms-list {
@@ -73,7 +249,7 @@ body {
 .rooms-list.show {
     display: block;
 }
-        
+
 .rooms-btn {
     background: #c00;
     color: #fff;
@@ -90,61 +266,70 @@ body {
     gap: 10px;
 }
 
-.arrow-down {
+.arrow-up {
     font-size: 1.2em;
     transition: transform 0.3s;
 }
 
-/* Tablet Size Portrait */
-@media (max-width: 768px) {
-    .logo {
-        width: 100px;
-        height: 100px;
-    }
-    .map-placeholder {
-        max-width: 350px;
-        height: 30vh;
-    }
-    .rooms-btn {
-        max-width: 180px;
-        font-size: 1.1rem;
-        padding: 12px 30px;
-    }
+.coming-soon {
+    color: #fff;
+    font-size: 1.2rem;
 }
 
-/* Phone Size Portrait */
+.right-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #c00;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.image-viewer {
+    width: 95vw;
+    max-width: 400px;
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.image-viewer img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+#backBtn, #nextBtn {
+    padding: 8px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #c00;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+#backBtn:hover, #nextBtn:hover {
+    background: #a00;
+}
+
 @media (max-width: 500px) {
     .logo {
-        width: 80px;
-        height: 80px;
+        width: 90px;
+        height: 90px;
     }
     .map-placeholder {
-        max-width: 320px;
-        height: 28vh;
+        height: 25vh;
     }
     .rooms-btn {
-        max-width: 160px;
         font-size: 1rem;
-        padding: 12px 20px;
+        padding: 14px 0;
     }
 }
-
-/* Landscape mode Phone/Tablet */
-@media (max-width: 1024px) and (orientation: landscape) {
-    .logo {
-        width: 70px;
-        height: 70px;
-    }
-    .map-placeholder {
-        width: 90vw;
-        max-width: none;
-        height: 50vh;
-    }
-    .rooms-btn {
-        max-width: 140px;
-        font-size: 0.9rem;
-        padding: 10px 16px;
-    }
-}
-
-
