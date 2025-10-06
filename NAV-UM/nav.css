@@ -60,6 +60,24 @@ select {
      overflow-y: auto;
 }
 
+/*Tablet Size*/
+@media (max-width: 768px) {
+    .logo {
+        width: 100px;
+        height: 100px;
+    }
+    .map-placeholder {
+        max-width: 350px;
+        height: 30vh;
+    }
+    .rooms-btn {
+        max-width: 180px;
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
+}
+
+/* Phone Phone Size */
 @media(max-width: 500px){
     .logo{
         width:90px;
@@ -68,5 +86,23 @@ select {
     form{
         font-size:1rem;
         padding:14px 0;
+    }
+}
+
+/* Landscape Phone/tablet */
+@media (max-width: 1024px) and (orientation: landscape) {
+    .logo {
+        width: 70px;
+        height: 70px;
+    }
+    .map-placeholder {
+        width: 90vw;
+        max-width: none;
+        height: 50vh;
+    }
+    .rooms-btn {
+        max-width: 140px;
+        font-size: 0.9rem;
+        padding: 10px 16px;
     }
 }
