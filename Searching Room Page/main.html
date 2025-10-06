@@ -3,23 +3,33 @@
  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Page</title>
+    <title>Nav-UM</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
  </head>
  <body>
         <div class="logo-container">
-        
-          <img src="logo.png" alt="School Logo" class="logo">
+
+          <img src="UM Logo.png" alt="School Logo" class="logo" id="logoBtn">
+          
 
         </div>
-     
-        <div class="map-placeholder">
 
-          <!-- mao ning ang Mapa sa school Wapay PIC -->
-           
-        </div> 
+        <div class="map-placeholder" id="mapPlaceholder">
+            <img src="Map.png" alt="Campus Map" class="campus-map-img">
+
+          
+          <div class="M-ap" id="map" style="display: none;">Map</div>
+          <button class="right-arrow" id="rightArrow" style="display: none;">→</button>
+
+        </div>
+
+        <div class="image-viewer" id="imageViewer" style="display: none;">
+          <img id="currentImage" src="" alt="CL-v3 Location">
+          <button id="backBtn">Back</button>
+          <button id="nextBtn">Next</button>
+        </div>
 
         <div class="rooms-btn-container">
             <button class="rooms-btn" id="roomsBtn">
@@ -33,14 +43,18 @@
               <div>AVR</div>
               <div>Room 301</div>
               <div>Room 302</div>
+              <div>Room-V2</div>
+              <div>Room-V3</div>
               <div>CL-v1</div>
+              <div>CL-v2</div>
               <div>CL-v3</div>
+              
 
             </div>
 
         </div>
 
-      
+
       <script src="script.js"></script>
  </body>
 </html>
