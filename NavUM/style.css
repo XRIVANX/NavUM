@@ -1,7 +1,4 @@
 @media (min-width: 1024px) {
-  .admin-login-and-register {
-    background-color: maroon;
-  }
   .form-title {
     color: gold;
   }
@@ -31,7 +28,7 @@
     border-radius: 20px;
     margin: 5px;
     background-color: gold;
-    color: maroon;
+    color: white;
   }
   .log-in-username,
   .log-in-password,
@@ -47,6 +44,10 @@
     align-self: center;
     border-radius: 20px;
   }
+  .log-in-window input,
+  .register-window input {
+    padding-left: 10px;
+  }
   .gender-type label {
     color: gold;
   }
@@ -57,7 +58,7 @@
     border-radius: 20px;
     margin: 5px;
     background-color: gold;
-    color: maroon;
+    color: white;
   }
   .hero-admin {
     max-width: fit-content;
@@ -82,7 +83,7 @@
     width: fit-content;
     border: none;
     background-color: maroon;
-    color: gold;
+    color: white;
     margin-right: 20px;
   }
   .user-name-container:hover {
@@ -140,7 +141,7 @@
   .floor-buttons-5 button {
     border-radius: 10px;
     padding: 5px;
-    color: gold;
+    color: white;
     background-color: maroon;
   }
   .floor-buttons-2 button:hover,
@@ -269,11 +270,9 @@
     justify-content: space-between;
     width: 800px;
   }
-  .edit-room-body {
-    background-color: maroon;
-  }
   .edit-room-container,
-  .update-directions-container {
+  .update-directions-container,
+  .single-picture-management {
     width: fit-content;
     height: fit-content;
     justify-content: center;
@@ -296,6 +295,9 @@
     align-self: center;
     align-content: center;
   }
+  .edit-room-window h1 {
+    color: white;
+  }
   .update-labels {
     display: flex;
     flex-direction: column;
@@ -310,17 +312,11 @@
     align-self: center;
     align-content: center;
     justify-items: center;
-    color: gold;
+    color: white;
   }
 
   .edit-room-window input {
-    text-align: center;
-    justify-content: center;
-    justify-self: center;
-    align-items: center;
-    align-self: center;
-    align-content: center;
-    justify-items: center;
+    padding-left: 10px;
     max-width: 300px;
   }
   .selected-room-photo,
@@ -360,7 +356,8 @@
     border-radius: 20px;
     margin: 5px;
     background-color: gold;
-    color: maroon;
+    color: white;
+    font-weight: bold;
   }
 }
 
@@ -386,7 +383,7 @@
     padding: 20px 10px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     background-color: maroon;
-    color: gold;
+    color: white;
     border-radius: 10px;
     border: 2px solid white;
   }
@@ -406,7 +403,7 @@
     text-align: center;
     align-self: center;
     background-color: gold;
-    color: maroon;
+    color: white;
     border-radius: 10px;
     margin: 5px;
   }
@@ -472,7 +469,7 @@
     width: fit-content;
     border: none;
     background-color: maroon;
-    color: gold;
+    color: white;
     margin-right: 20px;
   }
   .user-name-container:hover {
@@ -530,7 +527,7 @@
   .floor-buttons-5 button {
     border-radius: 10px;
     padding: 5px;
-    color: gold;
+    color: white;
     background-color: maroon;
   }
   .floor-buttons-2 button:hover,
@@ -709,7 +706,7 @@
     align-self: center;
     align-content: center;
     justify-items: center;
-    color: gold;
+    color: white;
   }
 
   .edit-room-window input {
@@ -761,7 +758,7 @@
     border-radius: 20px;
     margin: 5px;
     background-color: gold;
-    color: maroon;
+    color: white;
     font-size: 10px;
   }
 }
