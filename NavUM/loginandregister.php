@@ -14,6 +14,8 @@ if (isset($_POST['login'])) {
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['accountid'];
         $_SESSION['username'] = $row['username'];
+        require_once 'log_action.php';
+        log_user_action($conn, 'LOGIN_SUCCESS', 'User logged in successfully.');
         header("Location: admin_page.php");
         exit();
     } else {

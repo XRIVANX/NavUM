@@ -1,6 +1,6 @@
 <?php
 include("connect.php");
-
+include("log_action.php");
 if (!isset($_SESSION['user_id'])) {
     header("Location: index.php");
     exit();
@@ -21,7 +21,7 @@ if ($result->num_rows > 0) {
 
 $room_groups_data = [];
 
-$sql_rooms = "SELECT room_id, room_name, room_status, room_group_id, floor_id FROM rooms ORDER BY room_group_id, floor_id, room_id";
+$sql_rooms = "SELECT room_id, room_name, room_type, room_status, room_group_id, floor_id FROM rooms ORDER BY room_group_id, floor_id, room_id";
 $result_rooms = $conn->query($sql_rooms);
 
 if ($result_rooms) {
@@ -32,6 +32,50 @@ if ($result_rooms) {
     }
 }
 
+$sql_counts = "
+    SELECT 
+        SUM(CASE WHEN room_status = 'Available' THEN 1 ELSE 0 END) AS available_count,
+        SUM(CASE WHEN room_status = 'Maintenance' THEN 1 ELSE 0 END) AS maintenance_count,
+        SUM(CASE WHEN room_status = 'Setting Up' THEN 1 ELSE 0 END) AS setting_up_count,
+        COUNT(room_id) AS total_count
+    FROM rooms;
+";
+
+$room_counts = [
+    'available_count' => 0, 
+    'maintenance_count' => 0, 
+    'setting_up_count' => 0, 
+    'total_count' => 0
+];
+$result_counts = $conn->query($sql_counts);
+
+if ($result_counts && $result_counts->num_rows > 0) {
+    $room_counts = $result_counts->fetch_assoc();
+}
+
+$sql_logs = "
+    SELECT 
+        a.firstname, 
+        a.lastname, 
+        l.action_type, 
+        l.action_details, 
+        l.timestamp 
+    FROM action_logs l
+    JOIN accounts a ON l.accountid = a.accountid
+    WHERE l.accountid = '$user_id'
+    ORDER BY l.timestamp DESC 
+    LIMIT 100;
+";
+
+$history_logs = [];
+// Using @ to suppress errors if 'action_logs' table is missing during development
+$log_result = @$conn->query($sql_logs); 
+
+if ($log_result) {
+    while ($log = $log_result->fetch_assoc()) {
+        $history_logs[] = $log;
+    }
+}
 $conn->close();
 
 
@@ -50,11 +94,59 @@ $conn->close();
     <section class = "nav">
         <h1 class = "placeholder-logo">NavUM</h1>
         <ul>
+            <li class = "dashboard-button" id="dashboard-button">Dashboard</li>
+            <li class = "manage-button" id="manage-button">Manage Rooms</li>
+            <li class = "history-button" id="history-button">History Logs</li>
             <li class = "user-name-container"><span class="user-name"><?php echo $user_firstname . " " . $user_lastname; ?></span></li>
             <li class="log-out-button"><a href="logout.php">Log Out</a></li>
         </ul>
     </section>
-    <section class = "hero-admin">
+
+    <section class = "dashboard-page" id="dashboard-page">
+        <div class = "rooms-overview">
+            <h2>Rooms Status Overview (Total Rooms: <?php echo htmlspecialchars($room_counts['total_count']); ?>)</h2>
+            <div class="status-cards">
+                <div class="status-card available">
+                    <h3>Available</h3>
+                    <p class="count"><?php echo htmlspecialchars($room_counts['available_count']); ?></p>
+                </div>
+                <div class="status-card maintenance">
+                    <h3>In Maintenance</h3>
+                    <p class="count"><?php echo htmlspecialchars($room_counts['maintenance_count']); ?></p>
+                </div>
+                <div class="status-card setting-up">
+                    <h3>Setting Up</h3>
+                    <p class="count"><?php echo htmlspecialchars($room_counts['setting_up_count']); ?></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class = "history-page" id="history-page" style="display: none;">
+        <div class = "history-logs">
+            <h2>Your Recent Activity Logs (Last 100 Entries)</h2>
+            <div class="log-container">
+                <?php if (empty($history_logs)): ?>
+                    <p class="no-logs">
+                        No activity logs found for your user account.<br>
+                    </p>
+                <?php else: ?>
+                    <ul class="log-list">
+                        <?php foreach ($history_logs as $log): ?>
+                            <li class="log-item">
+                                <span class="log-timestamp">[<?php echo date('Y-m-d H:i:s', strtotime($log['timestamp'])); ?>]</span>
+                                <span class="log-user"><?php echo htmlspecialchars($log['firstname'] . ' ' . $log['lastname']); ?></span>
+                                <span class="log-details">- <?php echo htmlspecialchars($log['action_details']); ?></span>
+                                <span class="log-action">(<?php echo htmlspecialchars($log['action_type']); ?>)</span>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        </div>
+
+    </section>
+    <section class = "manage-page" id="manage-page" style="display: none;">
     <section class="adjacent-buildings-1">
       <section class="room-group-1">
         <ul class="rooms-1">
@@ -67,6 +159,7 @@ $conn->close();
         if (isset($room_groups_data[$group][$floor])): 
             foreach ($room_groups_data[$group][$floor] as $room):
                 $status_class = strtolower(str_replace(' ', '-', $room['room_status']));
+
         ?>
         <a href="edit_room.php?room_id=<?php echo htmlspecialchars($room['room_id']); ?>" style="text-decoration: none;">
             <li data-room-id="<?php echo htmlspecialchars($room['room_id']); ?>" 

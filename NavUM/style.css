@@ -2,6 +2,106 @@
   .form-title {
     color: gold;
   }
+  .dashboard-page {
+    padding: 20px;
+  }
+  .rooms-overview {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  .rooms-overview h2 {
+    margin-top: 0;
+    color: #333;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+  }
+  .status-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    justify-content: space-between;
+  }
+  .status-card {
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+  }
+  .status-card:hover {
+    transform: translateY(-5px);
+  }
+  .status-card h3 {
+    margin-top: 0;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  .status-card .count {
+    font-size: 3rem;
+    font-weight: bold;
+    line-height: 1;
+  }
+  .available {
+    background-color: #4caf50;
+  }
+  .maintenance {
+    background-color: #ff9800;
+  }
+  .setting-up {
+    background-color: #2196f3;
+  }
+  .log-container {
+    max-height: 70vh;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding-right: 10px;
+  }
+  .log-list {
+    list-style: none;
+    padding: 0;
+  }
+  .log-item {
+    width: 100%;
+    max-width: fit-content;
+    max-height: fit-content;
+    border-radius: 6px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 0.95rem;
+  }
+  .log-timestamp {
+    font-weight: bold;
+    color: #777;
+    margin-right: 15px;
+    min-width: 150px;
+  }
+  .log-user {
+    font-weight: 600;
+    color: #555;
+    margin-right: 10px;
+  }
+  .log-action {
+    font-style: italic;
+    color: #2a6496;
+    margin-left: 5px;
+  }
+  .log-details {
+    flex-grow: 1;
+  }
+  .no-logs {
+    text-align: center;
+    color: #999;
+    padding: 20px;
+  }
   .accounts-window,
   .log-in-window,
   .register-window {
@@ -84,7 +184,8 @@
     border: none;
     background-color: maroon;
     color: white;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .user-name-container:hover {
     background-color: maroon;
@@ -319,7 +420,14 @@
     padding-left: 10px;
     max-width: 300px;
   }
-  .selected-room-photo,
+  .selected-room-photo {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    align-self: center;
+    align-content: center;
+  }
   .existing-directions-photo {
     width: 500px;
     height: 300px;
@@ -342,7 +450,6 @@
     text-align: center;
     align-content: center;
   }
-
   .edit-room-button,
   .back-button,
   .save-changes-button,

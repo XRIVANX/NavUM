@@ -1,3 +1,4 @@
+//--------------------------------------------------------------------------
 //Rooms Group 2
 //--------------------------------------------------------------------------
 const firstfloor2_1 = document.getElementById("first-floor-button-2_1");
@@ -227,3 +228,31 @@ thirdfloor5_3.addEventListener("click", function () {
   secondfloorlist5.style.display = "none";
   thirdfloorlist5.style.display = "flex";
 });
+
+const dashboardbutton = document.getElementById("dashboard-button");
+const managebutton = document.getElementById("manage-button");
+const historybutton = document.getElementById("history-button");
+
+const dashboardpage = document.getElementById("dashboard-page");
+const historypage = document.getElementById("history-page");
+const managepage = document.getElementById("manage-page");
+
+//-----------------------------------------------------
+dashboardbutton.addEventListener("click", function () {
+  dashboardpage.style.display = "block";
+  historypage.style.display = "none";
+  managepage.style.display = "none";
+});
+//-----------------------------------------------------
+managebutton.addEventListener("click", function () {
+  dashboardpage.style.display = "none";
+  historypage.style.display = "none";
+  managepage.style.display = "block";
+});
+//-----------------------------------------------------
+historybutton.addEventListener("click", function () {
+  dashboardpage.style.display = "none";
+  historypage.style.display = "block";
+  managepage.style.display = "none";
+});
+//-----------------------------------------------------
