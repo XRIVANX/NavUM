@@ -2,7 +2,7 @@ if (document.getElementById("getStartedBtn")) {
   document
     .getElementById("getStartedBtn")
     .addEventListener("click", function () {
-      window.location.href = "scanner.php";
+      window.location.href = "starting_page.php";
     });
 }
 

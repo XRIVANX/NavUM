@@ -54,7 +54,7 @@ if (isset($_POST['register'])) {
         $stmt->bind_param("sssssss", $reg_username, $reg_password, $reg_firstname, $reg_lastname, $reg_sex_type, $reg_email, $reg_contactno); 
 
         if ($stmt->execute()) {
-            header("location: admin_page.php");
+            header("Location: index.php?page=admin_dashboard");
             exit();
         } else {
             $registration_error = "Error: " . $stmt->error;

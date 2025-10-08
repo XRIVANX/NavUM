@@ -1,7 +1,5 @@
 <?php
-
 include("loginandregister.php");
-
 ?>
 
 <!DOCTYPE html>
