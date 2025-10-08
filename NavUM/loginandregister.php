@@ -16,7 +16,7 @@ if (isset($_POST['login'])) {
         $_SESSION['username'] = $row['username'];
         require_once 'log_action.php';
         log_user_action($conn, 'LOGIN_SUCCESS', 'User logged in successfully.');
-        header("Location: admin_page.php");
+        header("Location: index.php?page=admin_dashboard");
         exit();
     } else {
         $login_error = "Invalid username or password";

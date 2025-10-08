@@ -405,7 +405,8 @@
   }
   .selected-room label,
   .edit-room-window label,
-  .edit-room-window h2 {
+  .edit-room-window h2,
+  .edit-room-window option {
     text-align: center;
     justify-content: center;
     justify-self: center;
@@ -420,7 +421,7 @@
     padding-left: 10px;
     max-width: 300px;
   }
-  .selected-room-photo {
+  .selected-room-photo-clickable {
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -428,9 +429,10 @@
     align-self: center;
     align-content: center;
   }
+  .selected-room-photo-clickable,
   .existing-directions-photo {
     width: 500px;
-    height: 300px;
+    height: fit-content;
     text-align: center;
     align-items: center;
     justify-content: center;
@@ -463,8 +465,56 @@
     border-radius: 20px;
     margin: 5px;
     background-color: gold;
-    color: white;
+    color: black;
     font-weight: bold;
+  }
+  .room-item-clickable {
+    cursor: pointer;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+  }
+  .room-item-clickable:hover {
+    background-color: #f0f0f0;
+  }
+  .directions-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    overflow-y: auto;
+  }
+  .directions-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 90%;
+    max-height: 90%;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: #333;
+  }
+  #directionsBody img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+    border-radius: 4px;
   }
 }
 
