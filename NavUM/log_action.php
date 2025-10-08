@@ -8,7 +8,6 @@
  */
 function log_user_action($conn, $action_type, $action_details) {
     if (!isset($_SESSION['user_id'])) {
-        // Cannot log action without a user ID
         return false;
     }
     
